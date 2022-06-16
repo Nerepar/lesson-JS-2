@@ -1,6 +1,15 @@
 class ArrayOperation {
     _delimiter = 2;
 
+    /**
+     * позволяет инициализировай объекты, т.е. при создании дочернего класса с такимиже объектами, они примут свойства
+     * прописанные в этом классе
+     * @param array создает массив
+     * @param startDigit задает начальное значение
+     * @param finishDigit задает конечное згначение
+     * @param delimiter задает делитель вводимый пользователем
+     */
+
     constructor(array = [], startDigit = 0,
                 finishDigit = 0, delimiter = null)
     {
@@ -10,13 +19,24 @@ class ArrayOperation {
         this.delimiter = delimiter;
     }
 
+    /**
+     * заполняет четными числами
+     */
     inputOddDigit() {
         this._process(this._delimiter, true);
     }
 
+    /**
+     * заполняет нечетными числами
+     */
+
     inputNotOddDigit() {
         this._process(this._delimiter);
     }
+
+    /**
+     * функция позволяющая задать делитель впучную
+     */
 
     inputManualDelimiterDigit () {
         if (!this.delimiter) {
@@ -27,9 +47,18 @@ class ArrayOperation {
         this._process(this.delimiter);
     }
 
+    /**
+     * функция для вывода массива
+     */
+
     printArray() {
         console.log(this.array);
     }
+
+    /**
+     * фнкция для проверки длины массива, если массив пустой выводит ошибку
+     * @private
+     */
 
     _checkArray() {
         if (this.array.length) {
@@ -37,6 +66,11 @@ class ArrayOperation {
             console.warn('Данные в массиве были удалены');
         }
     }
+
+    /**
+     * функция дл проверки значения начала и конца массива
+     * @private
+     */
 
     _checkStartAndFinishDigit() {
         if (this.startDigit === this.finishDigit) {
@@ -59,6 +93,14 @@ class ArrayOperation {
             console.warn('Значение конца диапазона будет взято по модулю');
         }
     }
+
+    /**
+     * процесс для проверки длины массива, а также значений его начала и конца,
+     * но для чего он нужен спросить у Евгения!!!
+     * @param delimiter
+     * @param isNot
+     * @private
+     */
 
     _process(delimiter, isNot = false) {
         this._checkArray();
